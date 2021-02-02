@@ -1,0 +1,119 @@
+---
+title: Add API
+image: /assets/images/logo-fb.png
+layout: default.liquid
+---
+<h1> Add API </h1>
+<div class="description">
+  <p>This page is help you to submit your API into the APIs.guru
+  directory. The most important requirement is the presence of a machine-readable
+  API definition in one of the popular formats, such as: OpenAPI(fka Swagger),
+  RAML, API Blueprint, etc. </p>
+  <p><strong> Important note:</strong> we only aggregate API definitions, not host them.
+  So please, provide us with a stable URL to the definition. We will use it to keep your definition
+  up to date: see our <a href="https://github.com/APIs-guru/openapi-directory#update-procedure">
+  update procedure </a>.</p>
+</div>
+<form id="add_api_form">
+  <label class="group-label label-required">Format of the definition:</label>
+  <radiogroup class="form-group">
+    <label class="control control--radio">
+      <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md"> OpenAPI(fka Swagger) 2.0</a>
+  		<input type="radio" name="spec-format" value="OpenAPI(fka Swagger) 2.0"/>
+  		<div class="control__indicator"></div>
+	  </label>
+    <label class="control control--radio">
+      <a target="_blank" href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md"> OpenAPI 3.0</a>
+  		<input type="radio" name="spec-format" value="OpenAPI 3.0"/>
+  		<div class="control__indicator"></div>
+	  </label>
+    <label class="control control--radio">
+      <a target="_blank" href="https://github.com/mashery/iodocs"> Mashery I/O Docs </a>
+  		<input type="radio" name="spec-format" value="I/O Docs"/>
+  		<div class="control__indicator"></div>
+	  </label>
+    <label class="control control--radio">
+      <a target="_blank" href="https://github.com/apiaryio/api-blueprint/blob/master/API%20Blueprint%20Specification.md"> API Blueprint </a>
+  		<input type="radio" name="spec-format" value="API Blueprint"/>
+  		<div class="control__indicator"></div>
+	  </label>
+    <label class="control control--radio">
+      <a target="_blank" href="https://developers.google.com/discovery/v1/reference/apis"> Google API Discovery </a>
+  		<input type="radio" name="spec-format" value="Google API Discovery"/>
+  		<div class="control__indicator"></div>
+	  </label>
+    <label class="control control--radio">
+      <a target="_blank" href="http://raml.org/spec.html"> RAML </a>
+  		<input type="radio" name="spec-format" value="RAML"/>
+  		<div class="control__indicator"></div>
+	  </label>
+    <label class="control control--radio">
+      <a target="_blank" href="http://www.w3.org/Submission/wadl/"> WADL </a>
+  		<input type="radio" name="spec-format" value="WADL"/>
+  		<div class="control__indicator"></div>
+	  </label>
+  </radiogroup>
+  <label class="group-label label-required ">Is the definition official ?</label>
+  <radiogroup class="form-group">
+    <label class="control control--radio"> Official
+      <input type="radio" name="official" value="YES" required/>
+      <div class="control__indicator"></div>
+    </label>
+    <label class="control control--radio"> Non-Official
+      <input type="radio" name="official" value="NO"/>
+      <div class="control__indicator"></div>
+    </label>
+  </radiogroup>
+  <span class="input input--hoshi">
+    <input name="name" class="input__field input__field--hoshi" type="text" required/>
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+      <span class="label-required input__label-content input__label-content--hoshi">API Name</span>
+    </label>
+  </span>
+  <span class="input input--hoshi">
+    <input name="url" class="input__field input__field--hoshi" type="url" required/>
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+      <span class="label-required input__label-content input__label-content--hoshi">URL to the definition</span>
+    </label>
+  </span>
+  <div class="form-group">
+    <button class="button cta" href="/browse-apis/"> Add API </button>
+  </div>
+</form>
+
+<script type="text/javascript" src="https://rawgit.com/pauldijou/open-issue/master/index.js"></script>
+<script type="text/javascript">
+  var form = document.getElementById('add_api_form');
+  form.onsubmit = addApi;
+  function addApi(e) {
+    e.preventDefault();
+    var details = {
+      format: form['spec-format'].value,
+      official: form.official.value,
+      url: form.url.value,
+      name: form.name.value
+    };
+
+    window.location = buildLink(details);
+    return false;
+  }
+
+  function buildLink(details) {
+    var body = '';
+    for (var prop in details) {
+      body += '**' + prop.capitalizeFirstLetter() + '**: ' + details[prop] + '\n';
+    }
+
+    return OpenIssue()
+      .provider('github')
+      .repository('APIs-guru/openapi-directory')
+      .labels('add API')
+      .title('Add "' + details.name + '" API')
+      .append(body)
+      .url();
+  }
+
+  String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
+</script>
