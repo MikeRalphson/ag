@@ -1,0 +1,18 @@
+/* Error: The target selector was not found.
+ * Use "@extend %vertical-rhythm !optional" to avoid this error.
+ *   ,
+ * 6 |     @extend %vertical-rhythm;
+ *   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src/assets/scss/syntax-highlighting.scss 6:5  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: The target selector was not found.\aUse "@extend %vertical-rhythm !optional" to avoid this error.\a   \2577 \a 6 \2502      @extend %vertical-rhythm;\a   \2502      ^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src/assets/scss/syntax-highlighting.scss 6:5  root stylesheet';
+}
