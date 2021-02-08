@@ -31,7 +31,7 @@ CardModel.prototype.fromAPIs = function(apis) {
         });
     });
 
-    this.versions = versions.length ? this.versions : null;
+    this.versions = versions.length > 1 ? versions : null;
     this.markedDescription = window.marked(this.info.description || '');
 
     return this;
