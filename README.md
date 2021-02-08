@@ -9,5 +9,5 @@
 
 ## Deploying
 
-* Set GitHub pages to serve from the `_site` directory
-
+* Demo'ing on GitHub pages: **TODO**
+* Copy over `master` branch of `APIs.guru.github.io` repo for live
