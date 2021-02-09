@@ -1,5 +1,19 @@
 'use strict';
 
+const dummy = {
+  loading: {
+    preferred: 'Loading...',
+    versions: {
+      'Loading...': {
+        info: {
+          description: 'Please wait...',
+          title: 'Loading...'
+        }
+      }
+    }
+  }
+};
+
 function CardModel() {
     this.preferred = '';
     this.api = '';
@@ -56,7 +70,7 @@ if (window.$) {
     var filter = function(data, search) {
         var result = {};
         $.each(data, function (name, apis) {
-            if (name.toUpperCase().indexOf(search) >= 0) {
+            if (name.toLowerCase().indexOf(search) >= 0) {
                 result[name] = apis;
             }
         });
@@ -67,19 +81,23 @@ if (window.$) {
       type: "GET",
       url: "https://api.apis.guru/v2/list.json",
       dataType: 'json',
-      cache: false,
+      cache: true,
       success: function (data) {
+        $('#apis-list').empty();
         updateCards(data);
 
         var searchInput = $('#search-input')[0];
         searchInput.addEventListener('keyup', function( ) { 
             $('#apis-list').empty();
 
-            var search = $('#search-input').val().toUpperCase();
+            var search = $('#search-input').val().toLowerCase();
             var result = filter(data, search);
             updateCards(result);
         }, false);
       }
     });
+
+    for (let i=0;i<8;i++) { updateCards(dummy); }
+
   });
 }
