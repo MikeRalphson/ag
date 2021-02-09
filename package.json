@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --update --style compressed --no-source-map ./src/assets/scss:./src/assets/stylesheets",
+    "sass.all": "sass --update --style compressed --no-source-map ./src/assets/scss:./src/assets/stylesheets",
+    "sass": "npx sass --style compressed --no-source-map ./src/assets/scss/style.scss:./src/assets/stylesheets/style.css",
     "debug": "DEBUG=Eleventy* npx eleventy --input=./src --output=./_site",
     "build": "npx eleventy --input=./src --output=./_site",
     "serve": "npx eleventy --serve --input=./src --output=./_site"
