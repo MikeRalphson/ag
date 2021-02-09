@@ -22,7 +22,7 @@ function CardModel() {
     this.externalUrl = '';
     this.versions = null;
     this.markedDescription = '';
-};
+}
 
 CardModel.prototype.fromAPIs = function(apis) {
     this.preferred = apis.preferred;
@@ -87,7 +87,7 @@ if (window.$) {
         updateCards(data);
 
         var searchInput = $('#search-input')[0];
-        searchInput.addEventListener('keyup', function( ) { 
+        searchInput.addEventListener('keyup', function() {
             $('#apis-list').empty();
 
             var search = $('#search-input').val().toLowerCase();

@@ -19,6 +19,8 @@ jobs:
       run: npx package-lock-audit ./package-lock.json
     - name: Install deps
       run: npm i
+    - name: Run lint
+      run: npm run lint
     - name: Run sass
       run: npm run sass
     - name: Run build
