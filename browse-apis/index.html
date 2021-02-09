@@ -3,13 +3,15 @@
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.9/css/bootstrap-material-design.min.css">
+    <link rel="preconnect" href="https://api.apis.guru">
+    <link rel="preconnect" href="https://img.shields.io">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>APIs.guru</title>
-<meta name="description" content="">
-<link rel="canonical" href="undefinedhttps://apis.guru/browse-apis/">
+<meta name="description" content="Our goal is to create a machine-readable Wikipedia for WEB APIs. If you have an API spec in any format (OpenAPI, Swagger, RAML, WADL, API Blueprint etc) for any public API, please, feel free to open an issue.">
+<link rel="canonical" href="https://apis.guru/browse-apis/">
 
 <!-- CSS -->
 <!-- inject:css -->
@@ -51,13 +53,13 @@
     
       
         
-        <a class="page-link" href="https://apis.guru/openapi-directory">Directory</a>
+        <a class="page-link" href="/openapi-directory">Directory</a>
         
       
     
       
         
-        <a class="page-link" href="https://apis.guru/browse-apis">Browse APIs</a>
+        <a class="page-link" href="/browse-apis">Browse APIs</a>
         
       
     
@@ -69,7 +71,7 @@
     
       
         
-        <a class="page-link" href="https://apis.guru/api-doc">Our API</a>
+        <a class="page-link" href="/api-doc">Our API</a>
         
       
     
@@ -82,8 +84,8 @@
 
   <h1>
     <div class="social-links">
-  <a target="=_blank" href="https://github.com/APIs-guru/api-models">
-    <img src="https://img.shields.io/github/stars/APIs-guru/api-models.svg?style=social&amp;label=Star" alt="Star on GitHub">
+  <a target="=_blank" href="https://github.com/APIs-guru/openapi-directory">
+    <img src="https://img.shields.io/github/stars/APIs-guru/openapi-directory.svg?style=social&amp;label=Star" alt="Stars on GitHub">
   </a>
   <a target="=_blank" href="https://twitter.com/intent/tweet?text=http%3A%2F%2FAPIs.guru%20-%20Wikipedia%20for%20%23Web%20%23APIs%20by%20@APIs_guru%20pic.twitter.com/UhlhbMw1NP">
     <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Tweet about APIs.guru">
@@ -139,6 +141,7 @@
                 <span>
                     <a href="{{=version.swaggerUrl}}" target="_blank" class="label label-primary">json</a>
                     <a href="{{=version.swaggerYamlUrl}}" target='_blank' class='label label-primary'>yaml</a>
+                    <a href='https://redocly.github.io/redoc/?url={{=version.swaggerUrl}}' target="_blank" class="label label-primary">Docs</a>
                 </span>
               </li>
               {{~}}
