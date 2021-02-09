@@ -9,5 +9,5 @@
 
 ## Deploying
 
-* Demo'ing on GitHub pages: **TODO**
-* Copy over `master` branch of `APIs.guru.github.io` repo for live
+* GitHub action to deploy to `gh-pages` branch
+* Preview: https://mertle.github.io/
