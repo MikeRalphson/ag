@@ -116,20 +116,20 @@
     <div class="number">
       <i>  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 31.4 31.4" xml:space="preserve"><path d="M0 9.5c0-1 0.7-2.3 1.6-2.8l10.8-6.3c0.9-0.5 2.4-0.5 3.3 0l10.8 6.3c0.9 0.5 1.6 1.8 1.6 2.8V22c0 1-0.7 2.3-1.6 2.8l-10.8 6.3c-0.9 0.5-2.4 0.5-3.3 0L1.6 24.9C0.7 24.4 0 23.1 0 22.1V9.5L0 9.5z"/></svg>
  </i>
-      <div class="number-value">
+      <div id="numAPIs" class="number-value">
         1913
       </div>
-      <div class="desciption">
+      <div class="description">
         API descriptions
       </div>
     </div>
     <div class="number">
       <i> <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 31.4 31.4" xml:space="preserve"><path d="M0 9.5c0-1 0.7-2.3 1.6-2.8l10.8-6.3c0.9-0.5 2.4-0.5 3.3 0l10.8 6.3c0.9 0.5 1.6 1.8 1.6 2.8V22c0 1-0.7 2.3-1.6 2.8l-10.8 6.3c-0.9 0.5-2.4 0.5-3.3 0L1.6 24.9C0.7 24.4 0 23.1 0 22.1V9.5L0 9.5z"/></svg>
  </i>
-      <div class="number-value">
+      <div id="numEndpoints" class="number-value">
         58614
       </div>
-      <div class="desciption">
+      <div class="description">
         Endpoints
       </div>
     </div>
@@ -139,7 +139,7 @@
       <div class="number-value">
         2245
       </div>
-      <div class="desciption">
+      <div class="description">
         Stars on GitHub
       </div>
     </div>
@@ -399,6 +399,22 @@
   </section>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $.ajax({
+      type: "GET",
+      url: "https://api.apis.guru/v2/metrics.json",
+      dataType: 'json',
+      cache: true,
+      success: function (data) {
+        $('#numAPIs').text(data.numAPIs);
+        $('#numEndpoints').text(data.numEndpoints);
+      }
+    });
+  });
+</script>
+
 </div>
 
 <footer class="site-footer">
@@ -424,7 +440,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.12/slideout.js"></script>
 
     <!-- inject:js -->
-    <script src="/assets/javascript/apis.js"></script>
     <script src="/assets/javascript/main.js"></script>
     <!-- endinject -->
 
