@@ -4,5 +4,8 @@
   "url": "https://apis.guru",
   "author": "APIs.guru",
   "twitter": "APIs_guru",
-  "image": "/assets/images/logo.svg"
+  "image": "/assets/images/logo.svg",
+  "options": {
+    "imageWithBaseUrl": true
+  }
 }
