@@ -85,20 +85,32 @@ if (window.$) {
       headers: { "Accept-Encoding" : "br,gzip,deflate" },
       success: function (data) {
         $('#apis-list').empty();
-        updateCards(data);
+        let search = $('#search-input').val().toLowerCase();
+        if (search) {
+          let result = filter(data, search);
+          updateCards(result);
+        }
+        else {
+          updateCards(data);
+        }
 
         var searchInput = $('#search-input')[0];
         searchInput.addEventListener('keyup', function() {
             $('#apis-list').empty();
 
-            var search = $('#search-input').val().toLowerCase();
-            var result = filter(data, search);
+            let search = $('#search-input').val().toLowerCase();
+            let result = filter(data, search);
             updateCards(result);
         }, false);
       }
     });
 
     for (let i=0;i<8;i++) { updateCards(dummy); }
+
+    let urlParams = new URLSearchParams(location.search);
+    if (urlParams.get('q')) {
+      $('#search-input').val(urlParams.get('q'));
+    }
 
   });
 }
