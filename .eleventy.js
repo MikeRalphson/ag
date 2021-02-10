@@ -1,6 +1,7 @@
+const pluginSEO = require('eleventy-plugin-seo');
+
 module.exports = function(eleventyConfig) {
-  // Add a filter using the Config API
-  //eleventyConfig.addFilter( "myFilter", function() {});
+  eleventyConfig.addPlugin(pluginSEO, require("./src/_data/seo.json"));
 
   // You can return your Config object (optional).
   eleventyConfig.addPassthroughCopy("src/assets");
