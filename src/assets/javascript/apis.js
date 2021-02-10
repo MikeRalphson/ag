@@ -82,6 +82,7 @@ if (window.$) {
       url: "https://api.apis.guru/v2/list.json",
       dataType: 'json',
       cache: true,
+      headers: { "Accept-Encoding" : "br,gzip,deflate" },
       success: function (data) {
         $('#apis-list').empty();
         updateCards(data);

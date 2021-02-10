@@ -33,19 +33,19 @@ order: 1
   <section class="numbers">
     <div class="number">
       <i>  {% include svg/number-romb.svg %} </i>
-      <div class="number-value">
+      <div id="numAPIs" class="number-value">
         1913
       </div>
-      <div class="desciption">
+      <div class="description">
         API descriptions
       </div>
     </div>
     <div class="number">
       <i> {% include svg/number-romb.svg %} </i>
-      <div class="number-value">
+      <div id="numEndpoints" class="number-value">
         58614
       </div>
-      <div class="desciption">
+      <div class="description">
         Endpoints
       </div>
     </div>
@@ -54,7 +54,7 @@ order: 1
       <div class="number-value">
         2245
       </div>
-      <div class="desciption">
+      <div class="description">
         Stars on GitHub
       </div>
     </div>
@@ -131,3 +131,19 @@ order: 1
 
   </section>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $.ajax({
+      type: "GET",
+      url: "https://api.apis.guru/v2/metrics.json",
+      dataType: 'json',
+      cache: true,
+      success: function (data) {
+        $('#numAPIs').text(data.numAPIs);
+        $('#numEndpoints').text(data.numEndpoints);
+      }
+    });
+  });
+</script>
