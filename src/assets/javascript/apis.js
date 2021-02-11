@@ -34,7 +34,7 @@ function debounce(func, wait, immediate) { // from underscore.js, MIT license
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-};
+}
 
 function CardModel() {
     this.preferred = '';
