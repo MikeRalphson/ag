@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.9/css/bootstrap-material-design.min.css">
@@ -141,7 +141,7 @@
       </div>
       <div class="panel-body">
         <div class="text-center panel-body-logo">
-          <img src="{{=it.logo.url || '/assets/images/no-logo.svg'}}"
+          <img src="{{=it.logo.url || '/assets/images/no-logo.svg'}}" alt="API logo"
             style="background-color: {{=it.logo.backgroundColor || 'transparent'}}" class="api-logo">
         </div>
         <div class="panel-body-description line-clamp line-clamp-3">{{=it.markedDescription}}</div>
