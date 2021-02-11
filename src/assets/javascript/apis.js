@@ -14,6 +14,13 @@ const dummy = {
   }
 };
 
+const renderer = new window.marked.Renderer();
+renderer.code = function(code, language) { return '' };
+renderer.table = function(header, body) { return '' };
+renderer.heading = function(text, number) { return `<h3>${text}</h3\n` };
+renderer.link = function(href, title, text) { return text };
+renderer.image = function(href, title, text) { return '' };
+
 function CardModel() {
     this.preferred = '';
     this.api = '';
@@ -46,7 +53,7 @@ CardModel.prototype.fromAPIs = function(apis) {
     });
 
     this.versions = versions.length > 1 ? versions : null;
-    this.markedDescription = window.marked(this.info.description || '');
+    this.markedDescription = window.marked(this.info.description || '', { renderer });
 
     return this;
 };
