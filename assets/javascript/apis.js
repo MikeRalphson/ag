@@ -14,6 +14,12 @@ const dummy = {
   }
 };
 
+const integrations = [
+ { "text": "Swagger UI", "template": "http://petstore.swagger.io/?url={swaggerUrl}" },
+ { "text": "Swagger Editor", "template": "http://editor.swagger.io/?url={swaggerUrl}" },
+ { "text": "OpenAPI-GUI", "template": "https://mermade.github.io/openapi-gui/?url={swaggerUrl}" }
+];
+
 const renderer = new window.marked.Renderer();
 renderer.code = function(code, language) { return '' };
 renderer.table = function(header, body) { return '' };
@@ -69,6 +75,10 @@ CardModel.prototype.fromAPIs = function(apis) {
 
     this.versions = versions.length > 1 ? versions : null;
     this.markedDescription = window.marked(this.info.description || '', { renderer });
+    this.integrations = [];
+    for (let i of integrations) {
+       this.integrations.push({ text: i.text, template: i.template.replace('{swaggerUrl}',this.api.swaggerUrl) });
+    }
 
     return this;
 };
@@ -104,7 +114,7 @@ if (window.$) {
       url: "https://api.apis.guru/v2/list.json",
       dataType: 'json',
       cache: true,
-      headers: { "Accept-Encoding" : "br,gzip,deflate" },
+      headers: { "Accept-Encoding" : "gzip,deflate,br" },
       success: function (data) {
         $('#apis-list').empty();
         let search = $('#search-input').val().toLowerCase();

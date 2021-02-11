@@ -171,7 +171,20 @@
             <a href="{{=it.api.swaggerUrl}}" target="_blank" class="label label-primary">json</a>
             <a href='{{=it.api.swaggerYamlUrl}}' target="_blank" class="label label-primary">yaml</a>
             <a href='https://redocly.github.io/redoc/?url={{=it.api.swaggerUrl}}' target="_blank" class="label label-primary">Docs</a>
-          </span>
+          <div class="btn-group">
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <span class="caret"></span><span aria-label="Tools">&nbsp;🔧</span>
+            </button>
+            <ul class="dropdown-menu">
+              {{~it.integrations :integration:index}}
+              <li>
+                <span>
+                    <a href="{{=integration.template}}" target="_blank" class="label label-primary">{{=integration.text}}</a>
+                </span>
+              </li>
+              {{~}}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
