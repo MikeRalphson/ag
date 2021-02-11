@@ -14,6 +14,28 @@ const dummy = {
   }
 };
 
+const renderer = new window.marked.Renderer();
+renderer.code = function(code, language) { return '' };
+renderer.table = function(header, body) { return '' };
+renderer.heading = function(text, number) { return `<h3>${text}</h3\n` };
+renderer.link = function(href, title, text) { return text };
+renderer.image = function(href, title, text) { return '' };
+
+function debounce(func, wait, immediate) { // from underscore.js, MIT license
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
 function CardModel() {
     this.preferred = '';
     this.api = '';
@@ -46,7 +68,7 @@ CardModel.prototype.fromAPIs = function(apis) {
     });
 
     this.versions = versions.length > 1 ? versions : null;
-    this.markedDescription = window.marked(this.info.description || '');
+    this.markedDescription = window.marked(this.info.description || '', { renderer });
 
     return this;
 };
@@ -95,13 +117,13 @@ if (window.$) {
         }
 
         var searchInput = $('#search-input')[0];
-        searchInput.addEventListener('keyup', function() {
+        searchInput.addEventListener('keyup', debounce(function() {
             $('#apis-list').empty();
 
             let search = $('#search-input').val().toLowerCase();
             let result = filter(data, search);
             updateCards(result);
-        }, false);
+        }, 333), false);
       }
     });
 
